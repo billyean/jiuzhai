@@ -7,13 +7,16 @@
 
 #include <faiss/MetaIndexes.h>
 #include <faiss/IndexFlat.h>
+#include <faiss/Index.h>
 #include <unordered_map>
 #include <vector>
 #include <tuple>
 
 using namespace std;
+using idx_t = faiss::Index::idx_t;
+using Index = faiss::Index;
 using IndexFlatIP = faiss::IndexFlatIP;
-using IndexFlatIPMap = faiss::IndexIDMap2Template<IndexFlatIP>;
+using IndexIDMap2 = faiss::IndexIDMap2Template<Index>;
 
 class VectorService {
 public:
@@ -21,10 +24,10 @@ public:
 
     void rebuild_index_by_category(string&, int, const float **, vector<int64_t>&);
 
-    tuple<int64_t *, float *> search(vector<string>, float *, int, float);
+    tuple<int64_t *, float *> search(vector<string>, const float *, int, float);
 private:
     int _d;
 
-    unordered_map<string, IndexFlatIPMap> indices;
+    unordered_map<string, IndexIDMap2*> indices;
 };
 #endif //JIUZHAI_VECTORSERVICE_H
