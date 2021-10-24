@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.walmart.labs.ads.vectorqsjava.grpc";
+option java_outer_classname = "ItemRankingProto";
+
+package itemranking;
+
+service ItemRanking {
+  rpc Query(VectorQueryRequest) returns (ItemRankResponse) {}
+}
+
+message VectorQueryRequest {
+  int32           row        = 1;
+  repeated string categories = 2;
+  bytes           vector     = 3;
+  float           minscore   = 4;
+}
+
+message ItemRankResponse {
+  repeated string item_ids    = 1;
+  repeated float  scores      = 2;
+}

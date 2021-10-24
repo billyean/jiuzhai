@@ -1,7 +1,7 @@
 #Adapted from: https://github.com/matrix-io/protocol-buffers/blob/master/CMakeLists.txt
 cmake_minimum_required(VERSION 3.16.3)
 
-project(project3)
+project(jiuzhai)
 
 find_program(PROTOC NAMES protoc)
 if (NOT EXISTS ${PROTOC})
@@ -20,6 +20,7 @@ endif()
 
 # .proto file search directory
 if (NOT DEFINED PROTO_SEARCH_PATH)
+  set(PROTO_SEARCH_PATH ${CMAKE_CURRENT_SOURCE_DIR})
   set(PROTO_SEARCH_PATH ${CMAKE_CURRENT_SOURCE_DIR})
 endif()
 

@@ -8,6 +8,8 @@ set (CMAKE_BUILD_TYPE Debug)
 
 find_package(gRPC CONFIG REQUIRED)
 find_package(faiss CONFIG REQUIRED)
+find_package(glog CONFIG REQUIRED)
+find_package(unixodbc CONFIG REQUIRED)
 find_package(Protobuf CONFIG REQUIRED)
 find_package(Threads REQUIRED)
 
